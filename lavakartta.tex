@@ -1,0 +1,52 @@
+\documentclass[12pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,fit,positioning,backgrounds}
+
+\usepackage{fontawesome}
+
+\newcommand{\ysinger}{-7}
+\newcommand{\xborder}{7}
+\newcommand{\keybrotate}{20}
+\newcommand{\bassrotate}{10}
+
+
+\begin{document}
+\tikzstyle{block} = [rectangle, draw, text centered, minimum height=1.5cm, text width=2.5cm]%
+\tikzstyle{line} = [draw, -latex]%
+
+\begin{tikzpicture}[node distance=3mm]
+
+  \node (drums) [block, minimum width=60mm, minimum height=30mm] at (0,0) {\textbf{Rummut}};
+  \node [anchor=south east, inner sep=2pt] at (drums.south east) {\scriptsize CH: 1-6};
+
+  \node (bass) [block, rotate=\bassrotate] at (-5, -1) {\textbf{Basso vahvistin}};
+  \node [anchor=south east, inner sep=2pt, rotate=\bassrotate] at (bass.south east) {\scriptsize CH: 7};
+
+  \node (guitar) [block, rotate=90] at (-\xborder-1, \ysinger +3) {\textbf{Kitara vahvistin}};
+  \node [anchor=south east, inner sep=2pt, rotate=90] at (guitar.south east) {\scriptsize CH: 8};
+
+  \node (keyboard) [block, rotate=\keybrotate, minimum width=30mm] at (\xborder, \ysinger+1) {\textbf{Koskettimet}};
+  \node [anchor=south east, inner sep=2pt, rotate=\keybrotate] at (keyboard.south east) {\scriptsize CH: 9-10};
+
+  \node (kirsti) [draw, ellipse, text centered, minimum height=4em] at (2, \ysinger) {\textbf{Laulu}, Kirsti};
+  \node [anchor=south, inner sep=2pt] at (kirsti.south) {\scriptsize CH: 11};
+  \node (krifu) [draw, ellipse, text centered, minimum height=4em] at (-2, \ysinger) {\textbf{Laulu}, Krifu};
+  \node [anchor=south, inner sep=2pt] at (krifu.south) {\scriptsize CH: 12};
+
+  \node (monkirsti) [block, rounded corners, below=of kirsti] {Monitori};
+  \node (monkrifu) [block, rounded corners, below=of krifu] {Monitori};
+  \node (monkeyb) [block, rounded corners, below=of keyboard, rotate=20] {Monitori};
+  \node (mondrums) [block, rounded corners, right=40mm of drums.north, rotate=-90] {Monitori};
+
+  \node (powerguit) [text centered, right=0.7cm of guitar.west] {2\faBolt};
+  \node (powerbass) [text centered, below=0.7cm of bass.west] {2\faBolt};
+  \node (powerkeyb) [text centered, below=0.7cm of keyboard.west] {2\faBolt};
+
+  \node (audiencel) [font=\fontsize{6}{6}\color{black!50}] at (-\xborder, \ysinger -3) {\faLongArrowDown~yleisö~\faLongArrowDown};
+  \node (audiencer) [font=\fontsize{6}{6}\color{black!50}] at (\xborder, \ysinger -3) {\faLongArrowDown~yleisö~\faLongArrowDown};
+
+\end{tikzpicture}
+\end{document}
+
